@@ -46,6 +46,7 @@
     margin-bottom: 10px;
     font-size: 20px;
     font-family: 'Circular-Loom';
+    align-items: center;
 }
 
 .title >img{
@@ -56,7 +57,7 @@
 
 .bottom_section{
     width: 100%;
-    background-color: aqua;
+    background-color: rgb(255, 255, 255);
     height:35%;
 }
 
@@ -72,16 +73,20 @@
     color:#7d8083;
 }
 
-.temprature_and_icon_wrpper{
-    display: flex;
-    align-items: center;
+.section2{
+    position: relative;
+    text-align: center;
 }
 
-.first{
-    flex:3;
+.weather_icon{
+    width: 100%;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
 }
 
-.second{
-    flex:2;
-}
+.weather_icon >p{
+    margin-top: -15px;
+    color:#7d8083;
 
+}

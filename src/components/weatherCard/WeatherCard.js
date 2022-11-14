@@ -1,9 +1,12 @@
-import React, {useState, useEffect} from "react";
+import React from "react";
+import {capitalize} from '../../javascript';
 
 
 const WeatherCard = ({weatherData})=>{  
-    console.log("data from card "+ weatherData);  
-    console.log(process.env);
+    const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+    const d = new Date();
+    const day = weekday[d.getDay()];
+
     return(
         <div className='outer_wrapper'>
                         
@@ -17,26 +20,22 @@ const WeatherCard = ({weatherData})=>{
                         <p className='place_p'>{weatherData.name}</p>
                     </div>
                     <div className='date'>
-                        <p className='date_p'>25 Jan 2019</p>
+                        <p className='date_p'>{day}</p>
+                    </div>   
+                    <div className='temprature'>
+                        <p className='temprature_p'>{weatherData.main.temp} &#8451;</p> 
                     </div>
-                    <div className="temprature_and_icon_wrpper">
-                        <div className="first">   
-                            <div className='temprature'>
-                                <p className='temprature_p'>{weatherData.main.temp} &#8451;</p> 
-                            </div>
-                            <div className="feels_like">
-                                <p>{`Feels Like ${weatherData.main.feels_like}`} &#8451;</p>
-                            </div>
-                        </div>
-                        <div className="second">
-                            <div id="weather_icon">
-                                <img id="wicon" src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt="Weather icon" />
-                            </div>
-                        </div>
+                    <div className="feels_like">
+                        <p>{`Feels Like ${weatherData.main.feels_like}`} &#8451;</p>
                     </div>
+
                 </div>
                 <div className='section2'>
-                    section 2
+                    <div className="weather_icon">
+                        <img id="wicon" src={`http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png`} alt="Weather icon" />
+                        <p>{capitalize(weatherData.weather[0].description)}</p>
+                    </div>
+                    
                 </div>
             </div>
 
