@@ -20,6 +20,8 @@ function App() {
 
 
     useEffect(() => {
+      console.log(process.env);
+      
         const fetchLocation = async () => {
           await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=delhi&appid=${api_key}`)
           .then(res=> res.json())
@@ -37,7 +39,7 @@ function App() {
           });
         }
 
-     //   fetchLocation();
+       fetchLocation();
       }, [])
 
 useEffect(()=>{
@@ -46,7 +48,7 @@ useEffect(()=>{
 
     return (
         <div className="App">
-        { loaded && <WeatherCard WeatherData={data}></WeatherCard> }
+        {loaded && <WeatherCard weatherData={data}></WeatherCard> }
         </div>
     );
 }
