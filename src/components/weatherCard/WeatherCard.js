@@ -2,10 +2,15 @@ import React from "react";
 import {capitalize} from '../../javascript';
 
 
-const WeatherCard = ({weatherData})=>{  
+const WeatherCard = ({weatherData, forecastData})=>{  
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const d = new Date();
     const day = weekday[d.getDay()];
+
+    const filterdData = forecastData.list.filter((data)=>{
+        return (data.dt_txt.split(" ")[1]=== '18:00:00');
+    });
+
 
     return(
         <div className='outer_wrapper'>
@@ -40,11 +45,25 @@ const WeatherCard = ({weatherData})=>{
             </div>
 
             <div className='bottom_section'>
-                <div className="timed-details"></div>
+               {
+                filterdData.map((forecast, index)=>(<OneDayForecastCard key={forecast.dt} data={forecast} day={weekday[d.getDay()+index].substring(0,3)}/>))
+               }
             </div>
         </div>
     );
 }
 
+
+const OneDayForecastCard= ({data, day})=>{
+    return(
+        <div className="forecast_card_wrapper">
+            <div className="forecast_card_details">
+                <p>{day}</p>
+                <img src={`http://openweathermap.org/img/w/${data.weather[0].icon}.png`}></img>
+                <p>{data.weather[0].main}</p>
+            </div>
+        </div>
+    )
+}
 
 export default WeatherCard;

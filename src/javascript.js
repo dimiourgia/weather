@@ -1,8 +1,9 @@
 
 const capitalize = (string)=>{
-    return string.charAt(0).toUpperCase() + string.slice(1);
+    const strings = string.split(" ");
+    const capitalisedStrings = strings.map((str)=>str.charAt(0).toUpperCase()+str.slice(1));
+    return capitalisedStrings.reduce((result, str)=>{return result+" "+str});
 };
-
 
 export {capitalize}
 

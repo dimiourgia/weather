@@ -9,8 +9,9 @@ import "../styles/app.css"
 
 function App() {
 
-    const [data, setData] =  useState([]);
-    const [city, setCity] = useState('Mumbai');
+    const [weatherData, setWeatherData] =  useState([]);
+    const [forecastData, setForecastData] = useState([]);
+    const [city, setCity] = useState('Muzaffarnagar');
     const [lat, setLat] = useState("");
     const [long, setLong] = useState("");
     const [loaded, setLoaded] = useState(false);
@@ -39,7 +40,14 @@ useEffect(()=>{
     await fetch(`https://api.openweathermap.org/data/2.5/weather/?lat=${lat}&lon=${long}&units=metric&APPID=${api_key}`)
     .then(res => res.json())
     .then(result => {
-      setData(result)
+      setWeatherData(result)
+      console.log(result);
+    })
+
+    await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${api_key}`)
+    .then(res => res.json())
+    .then(result => {
+      setForecastData(result)
       console.log(result);
       setLoaded(true);
     })
@@ -51,7 +59,7 @@ useEffect(()=>{
 
     return (
         <div className="App">
-        {loaded && <WeatherCard weatherData={data}></WeatherCard> }
+        {loaded && <WeatherCard weatherData={weatherData} forecastData={forecastData}></WeatherCard> }
         </div>
     );
 }
