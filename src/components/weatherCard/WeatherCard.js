@@ -2,7 +2,7 @@ import React from "react";
 import {capitalize} from '../../javascript';
 
 
-const WeatherCard = ({weatherData, forecastData})=>{  
+const WeatherCard = ({forecastData})=>{  
     const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
     const d = new Date();
     const day = weekday[d.getDay()];
@@ -10,6 +10,8 @@ const WeatherCard = ({weatherData, forecastData})=>{
     const filterdData = forecastData.list.filter((data)=>{
         return (data.dt_txt.split(" ")[1]=== '18:00:00');
     });
+
+    const weatherData = filterdData[0];
 
 
     return(
