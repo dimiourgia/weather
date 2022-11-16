@@ -46,7 +46,7 @@ const WeatherCard = ({weatherData, forecastData})=>{
 
             <div className='bottom_section'>
                {
-                filterdData.map((forecast, index)=>(<OneDayForecastCard key={forecast.dt} data={forecast} day={weekday[d.getDay()+index].substring(0,3)}/>))
+                filterdData.map((forecast, index)=>(<OneDayForecastCard key={forecast.dt} data={forecast} day={weekday[(d.getDay()+index)%7].substring(0,3)}/>))
                }
             </div>
         </div>
