@@ -13,7 +13,6 @@ const WeatherCard = ({forecastData})=>{
 
     const weatherData = filterdData[0];
 
-
     return(
         <div className='outer_wrapper'>
                         
@@ -21,7 +20,7 @@ const WeatherCard = ({forecastData})=>{
                 <div className='section1'>
                     <div className='title'>
                         <img src='https://www.clipartmax.com/png/small/234-2347009_cloud-forecast-sun-weather-icon-weather-icon.png' alt='forcaster_logo'></img>
-                        FORECASTER
+                         FORECASTER
                     </div>
                     <div className='place'>
                         <p className='place_p'>{weatherData.name}</p>
