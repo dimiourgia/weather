@@ -34,9 +34,12 @@ function App() {
 useEffect(()=>{
   console.log('from weather api');
 
+  const controller = new AbortController();
+  const signal = controller.signal;
+
   const fetchWeatherData = async ()=>{
     console.log('weather data requested');
-    await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${api_key}`)
+    await fetch(`https://api.openweathermap.org/data/2.5/forecast/?lat=${lat}&lon=${long}&units=metric&APPID=${api_key}`, {signal})
     .then(res => res.json())
     .then(result => {
       setForecastData(result);

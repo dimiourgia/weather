@@ -23,7 +23,7 @@ const WeatherCard = ({forecastData})=>{
                          FORECASTER
                     </div>
                     <div className='place'>
-                        <p className='place_p'>{weatherData.name}</p>
+                        <p className='place_p'>{forecastData.city.name}</p>
                     </div>
                     <div className='date'>
                         <p className='date_p'>{day}</p>
